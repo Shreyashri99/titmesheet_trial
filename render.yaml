@@ -1,0 +1,25 @@
+# Render Blueprint. In Render: New → Blueprint → point at this repo.
+# It creates the web service and prompts you for the secret values below.
+services:
+  - type: web
+    name: tiptop-timesheet
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: TIPTOP_PRODUCTS
+        sync: false            # your product list, comma separated
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_SECURE
+        value: "false"
+      - key: SMTP_USER
+        sync: false            # the Gmail address you send from
+      - key: SMTP_PASS
+        sync: false            # the 16-char Gmail App Password
+      - key: MAIL_FROM
+        sync: false            # e.g. Tiptop Timesheets <you@company.com>
+    # BASE_URL is auto-detected from RENDER_EXTERNAL_URL — no need to set it.
